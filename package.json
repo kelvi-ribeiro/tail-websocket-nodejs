@@ -1,0 +1,20 @@
+{
+    "name": "tailjs",
+    "description": "broadcast logs using websockets",
+    "version": "0.0.3",
+    "private": true,
+    "dependencies": {
+        "socket.io": "*",
+        "socket.io-client": "*",
+        "express": "*"
+    },        
+    "keywords": [
+        "tail",
+        "websocket",
+        "express"
+    ],
+    "bin": "./tail.js",
+    "config": {
+        "port": 8090
+    }
+}
