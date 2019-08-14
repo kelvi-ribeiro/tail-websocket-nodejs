@@ -5,10 +5,22 @@
     <title></title>
     <script type="text/javascript" src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id='files'></div>
-<pre id="output"></pre>
+<div class="term">
+    <div class="term-header">        
+        <div class="term-header-title">
+            <span>Log Sistema YYY</span>
+        </div>
+    </div>
+    <div class="term-content">
+    <span class="term-content-arrow">➜</span> <span class="term-content-tilde">~</span>
+     <span id="output" ></span>
+    </div>
+</div>
 <script type="text/javascript">
     YUI().use('node', function(Y) {
         var path = window.location.pathname,
