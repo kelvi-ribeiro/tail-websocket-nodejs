@@ -2,18 +2,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #333;
+  height: 100vh;  
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .term {
   width: 100%;
   height: 100%;
   border-radius: 7px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56);
-  background: #000;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.56);  
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -26,8 +29,7 @@ body {
 .term-content { 
   overflow-y: auto;     
   padding: 10px;
-  font-size: 14px;
-  color: lightgray;
+  font-size: 14px;  
 }
 .term-content-arrow {
   color: #55f95d;
@@ -36,4 +38,15 @@ body {
 .term-content-tilde {
   color: #54f9fb;
   margin-right: 10px;
+}
+
+#clear-icon {
+  width: 30px;
+  height: 30px;  
+}
+
+#buttons {
+  display: flex; 
+  justify-content: flex-end;
+  margin-right: 20px;
 }
