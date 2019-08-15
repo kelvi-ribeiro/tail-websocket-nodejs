@@ -25,6 +25,7 @@ body {
 }
 .term-content { 
   overflow-y: auto;   
+  overflow-x: hidden;   
   padding: 10px;
   font-size: 14px;
   color: lightgray;
