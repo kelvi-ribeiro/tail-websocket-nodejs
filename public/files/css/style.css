@@ -24,8 +24,7 @@ body {
   background: linear-gradient(#e2e0e2, #c7c6c8);
 }
 .term-content { 
-  overflow-y: auto;   
-  overflow-x: hidden;   
+  overflow-y: auto;     
   padding: 10px;
   font-size: 14px;
   color: lightgray;
@@ -37,10 +36,4 @@ body {
 .term-content-tilde {
   color: #54f9fb;
   margin-right: 10px;
-}
-
-#output {
-  word-wrap: break-word;      /* IE 5.5-7 */
-  white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
-  white-space: pre-wrap;    
 }
