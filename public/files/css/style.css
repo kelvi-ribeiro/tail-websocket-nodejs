@@ -40,14 +40,20 @@ body {
   margin-right: 10px;
 }
 
-#clear-icon {
-  width: 30px;
-  height: 30px;  
-}
 
 #buttons {      
   float: right;  
   position: relative; 
   bottom: 15px;
   right: 15px;
+}
+
+#buttons > img {      
+  width: 30px;
+  height: 30px;  
+  cursor: pointer;
+}
+
+.locker-paper-active {
+  background-color: #8e8ece;
 }
