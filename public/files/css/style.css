@@ -45,8 +45,9 @@ body {
   height: 30px;  
 }
 
-#buttons {
-  display: flex; 
-  justify-content: flex-end;
-  margin-right: 20px;
+#buttons {      
+  float: right;  
+  position: relative; 
+  bottom: 15px;
+  right: 15px;
 }
