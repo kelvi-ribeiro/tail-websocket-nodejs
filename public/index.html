@@ -16,8 +16,10 @@
                 <span>Log Sistema YYY</span>
             </div>
             <div id="buttons">
-                <img onclick="limparLog()" alt="Limpar Log" title="Limpar Log" class="cursor-pointer" id="clear-icon"
+                <img onclick="limparLog()" alt="Limpar Log" title="Limpar Log"  
                     src="img/eraser.svg">
+                <img onclick="desativarScrollAutomatico()" alt="Desativar Scroll automático" title="Desativar Scroll automático" id="lock-paper" 
+                    src="img/locker-paper.svg">
             </div>
         </div>
         <div class="term-content">
@@ -40,14 +42,20 @@
                 document.getElementById('output').append(data)
                 document.getElementById('output').appendChild(document.createElement("br"))
                 handleSizeLog(100000, 50000)
-                gotoBottom('term-content')
+               if(!window.isActive){
+                    gotoBottom('term-content')  
+               } 
             });
         });
 
-        function gotoBottom(idOrClassName) {
-            var element = document.getElementById(idOrClassName) || document.getElementsByClassName(idOrClassName)[0];
+        function gotoBottom(elementClassOrId) {
+            const element = getElementByClassOrId(elementClassOrId)
             element.scrollTop = element.scrollHeight - element.clientHeight;
         }
+
+        function getElementByClassOrId(elementClassOrId){
+            return document.getElementById(elementClassOrId) || document.getElementsByClassName(elementClassOrId)[0];
+        }   
 
         function limparLog() {
             document.getElementById('output').innerHTML = ''
@@ -58,6 +66,13 @@
             if (lengthLog >= maxLength) {
                 document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.substr(0, lengthToRemove)
             }
+        }
+
+        function desativarScrollAutomatico(){
+            const elementLockPaper = getElementByClassOrId('lock-paper')
+            const isActive = elementLockPaper.className.includes('active') ? true : false
+            getElementByClassOrId('lock-paper').className = isActive ? '' : 'locker-paper-active'
+            window.isActive = !isActive
         }
 
     </script>
