@@ -38,11 +38,19 @@
             socket.on('message', function (data) {
                 document.getElementById('output').append(data)
                 document.getElementById('output').appendChild(document.createElement("br"))
+                handleSizeLog(100000,50000)
             });
         });
 
         function limparLog() {
             document.getElementById('output').innerHTML = ''
+        }
+
+        function handleSizeLog(maxLength,lengthToRemove){
+            const lengthLog = document.getElementById('output').innerHTML.length
+            if(lengthLog >= maxLength){
+                document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.substr(0,lengthToRemove)
+            }
         }
     </script>
 </body>
