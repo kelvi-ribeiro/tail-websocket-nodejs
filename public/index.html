@@ -6,7 +6,7 @@
     <script type="text/javascript" src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,10 +16,10 @@
                 <span>Log Sistema YYY</span>
             </div>
             <div id="buttons">
-                <img  onclick="limparLog()" class="cursor-pointer" id="clear-icon" src="img/clear-icon.png" >
+                <img onclick="limparLog()" class="cursor-pointer" id="clear-icon" src="img/eraser.svg">
             </div>
         </div>
-        <div class="term-content">          
+        <div class="term-content">
             <span id="output"></span>
         </div>
     </div>
@@ -28,8 +28,8 @@
             const path = window.location.pathname,
                 output = Y.one('#output'),
                 files = Y.one('#files'),
-                socket = io.connect(path);            
-            socket.on('files', function (data) {                
+                socket = io.connect(path);
+            socket.on('files', function (data) {
                 output.append(data);
                 Y.Array.each(data, function (file, index) {
                     files.append('<a href="/files/' + index + '">' + file + '</a>&nbsp;');
@@ -41,7 +41,7 @@
             });
         });
 
-        function limparLog(){
+        function limparLog() {
             document.getElementById('output').innerHTML = ''
         }
     </script>
