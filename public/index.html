@@ -16,7 +16,8 @@
                 <span>Log Sistema YYY</span>
             </div>
             <div id="buttons">
-                <img onclick="limparLog()" alt="Limpar Log" title="Limpar Log" class="cursor-pointer" id="clear-icon" src="img/eraser.svg">
+                <img onclick="limparLog()" alt="Limpar Log" title="Limpar Log" class="cursor-pointer" id="clear-icon"
+                    src="img/eraser.svg">
             </div>
         </div>
         <div class="term-content">
@@ -38,20 +39,27 @@
             socket.on('message', function (data) {
                 document.getElementById('output').append(data)
                 document.getElementById('output').appendChild(document.createElement("br"))
-                handleSizeLog(100000,50000)
+                handleSizeLog(100000, 50000)
+                gotoBottom('term-content')
             });
         });
+
+        function gotoBottom(idOrClassName) {
+            var element = document.getElementById(idOrClassName) || document.getElementsByClassName(idOrClassName)[0];
+            element.scrollTop = element.scrollHeight - element.clientHeight;
+        }
 
         function limparLog() {
             document.getElementById('output').innerHTML = ''
         }
 
-        function handleSizeLog(maxLength,lengthToRemove){
+        function handleSizeLog(maxLength, lengthToRemove) {
             const lengthLog = document.getElementById('output').innerHTML.length
-            if(lengthLog >= maxLength){
-                document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.substr(0,lengthToRemove)
+            if (lengthLog >= maxLength) {
+                document.getElementById('output').innerHTML = document.getElementById('output').innerHTML.substr(0, lengthToRemove)
             }
         }
+
     </script>
 </body>
 
