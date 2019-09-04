@@ -5,7 +5,7 @@ const http = require('http')
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 const Tail = require('tail').Tail;
-const os = require('os');
+var ip = require('ip');
 const files = [
                   {codigo:'/files/controle-acesso', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\duvidas-do-projeto.txt'}
                 , {codigo:'/files/test', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\anotacoes.txt'}
@@ -34,8 +34,8 @@ files.forEach(file => {
         socket.setMaxListeners(15)
         socket.emit('files', files);
     });        
-    console.info('Listening on ??');
-    
+    console.log(`Listening on http://${ip.address()}:${port}${file.codigo}`);
+
     tails.forEach(tail => {      
         tail.on("line", function (data) {                       
             ns.emit(file.codigo, data);            
