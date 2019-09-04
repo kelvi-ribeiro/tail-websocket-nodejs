@@ -5,6 +5,7 @@
     "private": true,
     "dependencies": {
         "express": "*",
+        "ip": "^1.1.5",
         "socket.io": "*",
         "socket.io-client": "*",
         "tail": "^2.0.2"
