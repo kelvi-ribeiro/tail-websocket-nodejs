@@ -9,6 +9,9 @@
         "socket.io-client": "*",
         "tail": "^2.0.2"
     },
+    "scripts": {
+        "start": "node ./tail.js"
+    },
     "keywords": [
         "tail",
         "websocket",
