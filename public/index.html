@@ -27,18 +27,18 @@
         </div>
     </div>
     <script type="text/javascript">
-        YUI().use('node', function (Y) {
+        YUI().use('node', function (Y) {            
             const path = window.location.pathname,
                 output = Y.one('#output'),
                 files = Y.one('#files'),
                 socket = io.connect(path);
             socket.on('files', function (data) {
-                output.append(data);
+           /*      output.append(data);
                 Y.Array.each(data, function (file, index) {
                     files.append('<a href="/files/' + index + '">' + file + '</a>&nbsp;');
-                });
+                }); */
             });
-            socket.on('message', function (data) {
+            socket.on(window.location.pathname, function (data) {
                 document.getElementById('output').append(data)
                 document.getElementById('output').appendChild(document.createElement("br"))
                 handleSizeLog(100000, 50000)

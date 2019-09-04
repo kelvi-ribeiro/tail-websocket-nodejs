@@ -5,9 +5,10 @@ const http = require('http')
 const server = http.createServer(app);
 const io = require('socket.io').listen(server);
 const Tail = require('tail').Tail;
+const os = require('os');
 const files = [
-                  {codigo:'controle-acesso', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\duvidas-do-projeto.txt'}
-                , {codigo:'test', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\anotacoes.txt'}
+                  {codigo:'/files/controle-acesso', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\duvidas-do-projeto.txt'}
+                , {codigo:'/files/test', path:'C:\\Users\\kelvi.ribeiro\\Documents\\documentacao-scripts-sql-anotacoes\\anotacoes.txt'}
               ]
 const tails = files.map(file => new Tail(file.path));
 app.use(express.static('public'));
@@ -26,17 +27,18 @@ app.get('/files/:codigoFile', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-tails.forEach(tail => {
-    tail.on("line", function (data) {        
-        files.forEach(file => {
-            var nsName = file.codigo,
-            ns = io.of(nsName)
-                .on('connection', function (socket) {                
-                    socket.setMaxListeners(15)
-                    socket.emit('files', files);
-                });
+files.forEach(file => {
+    var nsName = file.codigo,
+    ns = io.of(nsName)
+    .on('connection', function (socket) {                
+        socket.setMaxListeners(15)
+        socket.emit('files', files);
+    });        
+    console.info('Listening on ??');
     
-            ns.emit('message', data);            
+    tails.forEach(tail => {      
+        tail.on("line", function (data) {                       
+            ns.emit(file.codigo, data);            
         });
     });
 });
