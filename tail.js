@@ -32,6 +32,15 @@ app.get('/files/:codigoFile', function (req, res) {
 
 });
 
+app.get('/files/object/:codigoFile', function (req, res) {       
+    const file = files.find(file => file.codigo === req.params.codigoFile)
+    if(file){
+        return res.json(file);
+    } else {
+        return res.status(404).send('Arquivo não encontrado')
+    } 
+});
+
 files.forEach(file => {
     var nsName = '/files/' + file.codigo,
     ns = io.of(nsName)
