@@ -11,7 +11,7 @@
         "tail": "^2.0.2"
     },
     "scripts": {
-        "start": "node ./tail.js"
+        "start": "nodemon ./tail.js"
     },
     "keywords": [
         "tail",
@@ -21,5 +21,8 @@
     "bin": "./tail.js",
     "config": {
         "port": 8090
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.2"
     }
 }
